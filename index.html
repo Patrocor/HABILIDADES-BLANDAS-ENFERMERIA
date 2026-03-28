@@ -375,16 +375,13 @@ const nextBlockBtn = document.getElementById('nextBlockBtn');
 const saveBtn = document.getElementById('saveBtn');
 const thankYou = document.getElementById('thankYou');
 
-// ----- Validación por bloque de escala -----
 function validarBloqueEscala(blockNumber){
   const blockItems = items.filter(i => i.block === blockNumber);
   for(const item of blockItems){
     const globalIndex = items.findIndex(it => it === item);
     const radios = document.querySelectorAll(`input[name="item${globalIndex}"]`);
     const algunoMarcado = Array.from(radios).some(r => r.checked);
-    if(!algunoMarcado){
-      return false;
-    }
+    if(!algunoMarcado) return false;
   }
   return true;
 }
@@ -422,16 +419,14 @@ nextBlockBtn.onclick = () => {
   if(!validarBloqueEscala(currentBlock)) return;
   if(currentBlock<maxBlock){ currentBlock++; updateBlockVisibility(); }
 };
-
 document.querySelectorAll('#scaleView input[type="radio"]').forEach(r=>{
   r.addEventListener('change', actualizarEstadoBotonEscala);
 });
 
-// ----- Flujo de vistas y validación por página -----
+// ----- Flujo de vistas -----
 const acceptConsent=document.getElementById('acceptConsent');
 const consentFields=document.getElementById('consentFields');
 const continueBtn=document.getElementById('continueBtn');
-
 const goLaborBtn = document.getElementById('goLaborBtn');
 const goScaleBtn = document.getElementById('goScaleBtn');
 
@@ -446,7 +441,6 @@ function actualizarEstadoConsentimiento(){
   const ok = acceptConsent.checked && dni.value.trim() && ageConsent.value;
   continueBtn.disabled = !ok;
 }
-
 ['dni','ageConsent'].forEach(id=>{
   const el = document.getElementById(id);
   el.addEventListener('input', actualizarEstadoConsentimiento);
@@ -560,13 +554,21 @@ saveBtn.onclick=()=>{
 
   fetch(ENDPOINT, {
     method: 'POST',
-    // sin headers explícitos para evitar problemas CORS
     body: JSON.stringify(payload)
   })
-  .then(res => res.json())
-  .then(data => {
-    if(!data.ok){
-      alert('Ocurrió un problema al guardar sus respuestas. Intente nuevamente.');
+  .then(res => res.text())
+  .then(txt => {
+    console.log('Respuesta cruda:', txt);
+    let data;
+    try {
+      data = JSON.parse(txt);
+    } catch (e) {
+      alert('El servidor devolvió una respuesta no válida.\n' + txt);
+      saveBtn.disabled = false;
+      return;
+    }
+    if (!data.ok) {
+      alert('El servidor respondió con error.\n' + (data.error || 'Error desconocido'));
       saveBtn.disabled = false;
       return;
     }
