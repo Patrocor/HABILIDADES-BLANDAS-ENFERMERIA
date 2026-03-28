@@ -89,7 +89,6 @@ input, select, textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-
   .row{grid-template-columns:1fr;gap:10px}
   .btn{width:100%;text-align:center}
   .scale-grid{grid-template-columns:1fr;gap:6px}
-
   .consent-panel{
     padding:14px 12px;
     margin-top:10px;
@@ -436,7 +435,6 @@ const continueBtn=document.getElementById('continueBtn');
 const goLaborBtn = document.getElementById('goLaborBtn');
 const goScaleBtn = document.getElementById('goScaleBtn');
 
-// Mostrar campos de consentimiento al marcar y habilitar botón según validez
 acceptConsent.addEventListener('change',()=>{
   consentFields.classList.toggle('hidden',!acceptConsent.checked);
   actualizarEstadoConsentimiento();
@@ -462,7 +460,6 @@ continueBtn.onclick=()=>{
   actualizarEstadoDatosGenerales();
 };
 
-// Validar datos generales en tiempo real
 function datosGeneralesCompletos(){
   const campos = [
     document.getElementById('ageGeneral'),
@@ -488,7 +485,6 @@ goLaborBtn.onclick=()=>{
   actualizarEstadoDatosLaborales();
 };
 
-// Validar datos laborales en tiempo real
 function datosLaboralesCompletos(){
   const campos = [
     document.getElementById('yearsService'),
@@ -527,7 +523,7 @@ function generarIdDesdeDni(dni){
       suma += ch.charCodeAt(0);
     }
   }
-  const num = (suma % 999) + 1; // 1–999
+  const num = (suma % 999) + 1;
   return 'P' + String(num).padStart(3,'0');
 }
 
@@ -564,7 +560,7 @@ saveBtn.onclick=()=>{
 
   fetch(ENDPOINT, {
     method: 'POST',
-    headers: {'Content-Type':'application/json'},
+    // sin headers explícitos para evitar problemas CORS
     body: JSON.stringify(payload)
   })
   .then(res => res.json())
