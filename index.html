@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formulario de estudio - Habilidades blandas en enfermería</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;color:#1f2937}
+.container{max-width:920px;margin:32px auto;padding:20px}
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08);padding:24px;margin-bottom:18px;border:1px solid #eef2f7}
+h1{margin:0 0 8px;font-size:28px;text-align:center}
+h2{font-size:20px;margin:0 0 14px}
+h3{margin:10px 0 8px;font-size:17px;color:#0f172a}
+p{line-height:1.6}
+label{display:block;margin:14px 0 6px;font-weight:600}
+input, select, textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:10px;font-size:15px;box-sizing:border-box}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.btn{background:#2563eb;color:#fff;border:none;padding:12px 18px;border-radius:10px;font-size:16px;cursor:pointer;margin-top:16px;transition:transform .05s ease,opacity .2s ease}
+.btn.secondary{background:#6b7280}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+.small{font-size:13px;color:#6b7280}
+.hidden{display:none}
+.scale-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.option{border:1px solid #d1d5db;border-radius:10px;padding:10px;text-align:left;font-size:13px}
+.topbar{background:linear-gradient(90deg,#0f172a,#1e3a8a);color:#fff;padding:14px 20px}
+
+/* Bloque de investigadores centrado */
+.investigators-wrapper{
+  text-align:center;
+  margin-bottom:8px;
+}
+.investigators-wrapper ul{
+  display:inline-block;
+  text-align:left;
+  margin:4px 0 0;
+  padding-left:20px;
+}
+
+/* Bloque de consentimiento más visible */
+.consent-panel{
+  border:1px solid #d1d5db;
+  border-radius:14px;
+  padding:16px 18px;
+  margin-top:14px;
+  background:#f9fafb;
+}
+.consent-panel h2{
+  margin-top:0;
+}
+.consent-panel p{
+  text-align:justify;
+  text-justify:inter-word;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* Checkbox de consentimiento más notorio */
+.consent-box{
+  border:2px solid #2563eb;
+  border-radius:12px;
+  padding:14px 16px;
+  margin-top:14px;
+  background:#eff6ff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.consent-box input[type="checkbox"]{
+  width:26px;
+  height:26px;
+  accent-color:#2563eb;
+  cursor:pointer;
+}
+.consent-label-text{
+  font-weight:700;
+  font-size:15px;
+}
+
+/* Marcado de error simple */
+.error-field{
+  border-color:#dc2626 !important;
+  background:#fef2f2;
+}
+
+/* Mejora para teléfonos */
+@media (max-width: 640px){
+  .container{margin:16px auto;padding:12px}
+  .card{padding:16px;border-radius:12px}
+  .row{grid-template-columns:1fr;gap:10px}
+  .btn{width:100%;text-align:center}
+  .scale-grid{grid-template-columns:1fr;gap:6px}
+
+  .consent-panel{
+    padding:14px 12px;
+    margin-top:10px;
+  }
+  .consent-panel p{
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:10px;
+  }
+  .consent-box{
+    flex-direction:row;
+    align-items:flex-start;
+    padding:12px 10px;
+    gap:10px;
+  }
+  .consent-box input[type="checkbox"]{
+    width:24px;
+    height:24px;
+    margin-top:2px;
+  }
+  .consent-label-text{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="topbar"><strong>Habilidades blandas en el personal de enfermería</strong></div>
+<div class="container">
+
+  <!-- Vista participante: consentimiento y formulario -->
+  <div class="card" id="participantView">
+    <h1>Formulario de investigación</h1>
+
+    <div class="investigators-wrapper">
+      <p><strong>Investigador principal y co-investigadores:</strong></p>
+      <ul>
+        <li>Mg. Rosa María Zavaleta Otiniano</li>
+        <li>Dra. Janet Julia Chunga Medina</li>
+        <li>Mg. Lester Byron Rodríguez Lázaro</li>
+      </ul>
+    </div>
+
+    <p style="font-size:18px;"><strong>Título del estudio:</strong> Habilidades blandas en el personal de enfermería de un hospital de nivel II de La Libertad</p>
+    <p><strong>Objetivo general:</strong> Determinar el nivel de habilidades blandas en el personal de enfermería y su relación con variables sociodemográficas y laborales.</p>
+
+    <div class="consent-panel">
+      <h2>Consentimiento informado</h2>
+      <p>Se le invita a participar en un estudio de investigación orientado a evaluar las habilidades blandas en el personal de enfermería y su relación con variables sociodemográficas y laborales. Su participación es completamente voluntaria. Usted puede aceptar o rechazar su participación sin que ello genere consecuencia alguna para su situación laboral, académica o asistencial.</p>
+      <p>La información que proporcione será tratada de manera confidencial y utilizada exclusivamente con fines académicos y científicos. Para fines de validación del consentimiento, se solicitará su número de DNI; este será empleado solo como referencia de firma digital y para asignar un código interno de análisis. En ningún caso será difundido en los resultados ni en los informes derivados del estudio.</p>
+
+      <div class="consent-box">
+        <input type="checkbox" id="acceptConsent">
+        <div class="consent-label-text">
+          He leído la información anterior y acepto participar voluntariamente en este estudio.
+        </div>
+      </div>
+
+      <div id="consentFields" class="hidden">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" placeholder="Ingrese su DNI" />
+        <label for="ageConsent">Edad</label>
+        <input type="number" id="ageConsent" placeholder="Ingrese su edad" min="18" max="100" />
+        <p class="small">El DNI se utilizará únicamente para validar su consentimiento y generar un identificador interno de estudio. No será publicado ni compartido.</p>
+      </div>
+    </div>
+
+    <button class="btn" id="continueBtn" disabled>Continuar</button>
+  </div>
+
+  <div class="card hidden" id="generalDataView">
+    <h2>Datos generales</h2>
+    <p class="small">Complete todos los campos para continuar.</p>
+    <div class="row">
+      <div>
+        <label>Edad</label>
+        <input id="ageGeneral" type="number" min="18" max="100" placeholder="Ingrese su edad">
+      </div>
+      <div>
+        <label>Sexo</label>
+        <select id="sex">
+          <option value="">Seleccione</option>
+          <option>Femenino</option>
+          <option>Masculino</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Lugar de trabajo</label>
+        <select id="workplace">
+          <option value="">Seleccione</option>
+          <option>Hospital César Vallejo Mendoza - Santiago de Chuco</option>
+        </select>
+      </div>
+      <div>
+        <label>Nivel de formación</label>
+        <select id="education">
+          <option value="">Seleccione</option>
+          <option>Licenciado/a en enfermería</option>
+          <option>Especialidad</option>
+          <option>Maestría</option>
+          <option>Doctorado</option>
+          <option>Otro</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Estado civil</label>
+        <select id="marital">
+          <option value="">Seleccione</option>
+          <option>Soltero/a</option>
+          <option>Casado/a</option>
+          <option>Conviviente</option>
+          <option>Divorciado/a</option>
+          <option>Viudo/a</option>
+        </select>
+      </div>
+      <div></div>
+    </div>
+    <button class="btn secondary" id="goLaborBtn" disabled>Siguiente: datos laborales</button>
+  </div>
+
+  <div class="card hidden" id="laborView">
+    <h2>Datos laborales</h2>
+    <p class="small">Complete todos los campos para continuar.</p>
+    <div class="row">
+      <div>
+        <label>Tiempo de servicio en enfermería</label>
+        <select id="yearsService">
+          <option value="">Seleccione</option>
+          <option>Menos de 1 año</option>
+          <option>1 a 3 años</option>
+          <option>4 a 6 años</option>
+          <option>7 a 10 años</option>
+          <option>Más de 10 años</option>
+        </select>
+      </div>
+      <div>
+        <label>Servicio o unidad</label>
+        <select id="unit">
+          <option value="">Seleccione</option>
+          <option>Consulta externa</option>
+          <option>Hospitalización</option>
+          <option>Emergencia</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Tipo de contrato</label>
+        <select id="contract">
+          <option value="">Seleccione</option>
+          <option>CAS</option>
+          <option>Nombrado 276</option>
+          <option>Personal tercero/SNP</option>
+        </select>
+      </div>
+      <div>
+        <label>Turno habitual</label>
+        <select id="shift">
+          <option value="">Seleccione</option>
+          <option>DÍA</option>
+          <option>NOCHE</option>
+          <option>ROTATIVO</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>¿Tiene otro trabajo?</label>
+        <select id="otherJob">
+          <option value="">Seleccione</option>
+          <option>Sí</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div>
+        <label>¿Actualmente estudia especialización, maestría, doctorado o estudios afines?</label>
+        <select id="postgradStudy">
+          <option value="">Seleccione</option>
+          <option>Sí</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>¿Tiene hijos?</label>
+        <select id="hasChildren">
+          <option value="">Seleccione</option>
+          <option>Sí</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div></div>
+    </div>
+    <button class="btn secondary" id="goScaleBtn" disabled>Siguiente: escala</button>
+  </div>
+
+  <div class="card hidden" id="scaleView">
+    <h2>Escala de habilidades blandas</h2>
+    <p class="small">A continuación, indique su nivel de acuerdo con cada afirmación, donde 1 corresponde a "Totalmente en desacuerdo" y 5 a "Totalmente de acuerdo". Responda con sinceridad; no hay respuestas correctas o incorrectas.</p>
+
+    <div id="scaleBlock1"></div>
+    <div id="scaleBlock2" class="hidden"></div>
+    <div id="scaleBlock3" class="hidden"></div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:16px;gap:8px;">
+      <button class="btn secondary" id="prevBlockBtn" style="visibility:hidden;">Anterior bloque</button>
+      <button class="btn" id="nextBlockBtn" disabled>Siguiente bloque</button>
+    </div>
+
+    <button class="btn hidden" id="saveBtn" disabled>Enviar respuestas</button>
+    <p class="small hidden" id="thankYou">Gracias por su participación. Sus respuestas han sido registradas.</p>
+  </div>
+
+</div>
+
+<script>
+// ----- Escala en 3 bloques -----
+const items = [
+  {block:1, title:'Bloque 1. Competencia comunicativa', text:'Me comunico con claridad con pacientes y colegas.'},
+  {block:1, title:'Bloque 1. Competencia comunicativa', text:'Escucho con atención las necesidades del paciente.'},
+  {block:1, title:'Bloque 1. Competencia comunicativa', text:'Explico procedimientos o indicaciones de manera comprensible.'},
+  {block:1, title:'Bloque 1. Competencia comunicativa', text:'Mantengo una actitud respetuosa durante la interacción con otras personas.'},
+
+  {block:2, title:'Bloque 2. Autorregulación emocional', text:'Puedo controlar mis emociones en situaciones de presión.'},
+  {block:2, title:'Bloque 2. Autorregulación emocional', text:'Mantengo la calma ante situaciones complejas en el trabajo.'},
+  {block:2, title:'Bloque 2. Autorregulación emocional', text:'Reconozco mis emociones cuando enfrento dificultades laborales.'},
+  {block:2, title:'Bloque 2. Autorregulación emocional', text:'Busco soluciones adecuadas cuando me siento sobrecargado(a).'},
+
+  {block:3, title:'Bloque 3. Desempeño profesional y trabajo en equipo', text:'Mantengo la confidencialidad de la información del paciente.'},
+  {block:3, title:'Bloque 3. Desempeño profesional y trabajo en equipo', text:'Trabajo en equipo de manera efectiva.'},
+  {block:3, title:'Bloque 3. Desempeño profesional y trabajo en equipo', text:'Respeto las opiniones y aportes de mis compañeros de trabajo.'},
+  {block:3, title:'Bloque 3. Desempeño profesional y trabajo en equipo', text:'Cumplo mis funciones con responsabilidad y compromiso.'}
+];
+
+function buildBlock(containerId, blockNumber){
+  const container = document.getElementById(containerId);
+  const blockItems = items.filter(i => i.block === blockNumber);
+  if(!blockItems.length) return;
+  const title = document.createElement('h3');
+  title.textContent = blockItems[0].title;
+  container.appendChild(title);
+
+  const labels = {
+    1: '1. Totalmente en desacuerdo',
+    2: '2. En desacuerdo',
+    3: '3. Ni de acuerdo ni en desacuerdo',
+    4: '4. De acuerdo',
+    5: '5. Totalmente de acuerdo'
+  };
+
+  blockItems.forEach((item) => {
+    const globalIndex = items.findIndex(it => it === item);
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom='16px';
+    wrap.innerHTML =
+      `<label>${globalIndex+1}. ${item.text}</label>`+
+      `<div class='scale-grid'>`+
+      [1,2,3,4,5].map(n =>
+        `<label class='option'><input type='radio' name='item${globalIndex}' value='${n}'> ${labels[n]}</label>`
+      ).join('')+
+      `</div>`;
+    container.appendChild(wrap);
+  });
+}
+
+buildBlock('scaleBlock1',1);
+buildBlock('scaleBlock2',2);
+buildBlock('scaleBlock3',3);
+
+let currentBlock = 1;
+const maxBlock = 3;
+const blockEls = {
+  1: document.getElementById('scaleBlock1'),
+  2: document.getElementById('scaleBlock2'),
+  3: document.getElementById('scaleBlock3')
+};
+const prevBlockBtn = document.getElementById('prevBlockBtn');
+const nextBlockBtn = document.getElementById('nextBlockBtn');
+const saveBtn = document.getElementById('saveBtn');
+const thankYou = document.getElementById('thankYou');
+
+// ----- Validación por bloque de escala -----
+function validarBloqueEscala(blockNumber){
+  const blockItems = items.filter(i => i.block === blockNumber);
+  for(const item of blockItems){
+    const globalIndex = items.findIndex(it => it === item);
+    const radios = document.querySelectorAll(`input[name="item${globalIndex}"]`);
+    const algunoMarcado = Array.from(radios).some(r => r.checked);
+    if(!algunoMarcado){
+      return false;
+    }
+  }
+  return true;
+}
+
+function actualizarEstadoBotonEscala(){
+  const completo = validarBloqueEscala(currentBlock);
+  if(currentBlock < maxBlock){
+    nextBlockBtn.disabled = !completo;
+  }else{
+    saveBtn.disabled = !completo;
+  }
+}
+
+function updateBlockVisibility(){
+  for(let b=1;b<=maxBlock;b++){
+    blockEls[b].classList.toggle('hidden', b!==currentBlock);
+  }
+  prevBlockBtn.style.visibility = currentBlock === 1 ? 'hidden' : 'visible';
+  if(currentBlock === maxBlock){
+    nextBlockBtn.classList.add('hidden');
+    saveBtn.classList.remove('hidden');
+  }else{
+    nextBlockBtn.classList.remove('hidden');
+    saveBtn.classList.add('hidden');
+    thankYou.classList.add('hidden');
+  }
+  actualizarEstadoBotonEscala();
+}
+updateBlockVisibility();
+
+prevBlockBtn.onclick = () => {
+  if(currentBlock>1){ currentBlock--; updateBlockVisibility(); }
+};
+nextBlockBtn.onclick = () => {
+  if(!validarBloqueEscala(currentBlock)) return;
+  if(currentBlock<maxBlock){ currentBlock++; updateBlockVisibility(); }
+};
+
+document.querySelectorAll('#scaleView input[type="radio"]').forEach(r=>{
+  r.addEventListener('change', actualizarEstadoBotonEscala);
+});
+
+// ----- Flujo de vistas y validación por página -----
+const acceptConsent=document.getElementById('acceptConsent');
+const consentFields=document.getElementById('consentFields');
+const continueBtn=document.getElementById('continueBtn');
+
+const goLaborBtn = document.getElementById('goLaborBtn');
+const goScaleBtn = document.getElementById('goScaleBtn');
+
+// Mostrar campos de consentimiento al marcar y habilitar botón según validez
+acceptConsent.addEventListener('change',()=>{
+  consentFields.classList.toggle('hidden',!acceptConsent.checked);
+  actualizarEstadoConsentimiento();
+});
+
+function actualizarEstadoConsentimiento(){
+  const dni = document.getElementById('dni');
+  const ageConsent = document.getElementById('ageConsent');
+  const ok = acceptConsent.checked && dni.value.trim() && ageConsent.value;
+  continueBtn.disabled = !ok;
+}
+
+['dni','ageConsent'].forEach(id=>{
+  const el = document.getElementById(id);
+  el.addEventListener('input', actualizarEstadoConsentimiento);
+});
+
+continueBtn.onclick=()=>{
+  document.getElementById('participantView').classList.add('hidden');
+  document.getElementById('generalDataView').classList.remove('hidden');
+  const age = document.getElementById('ageConsent').value;
+  if(age) document.getElementById('ageGeneral').value = age;
+  actualizarEstadoDatosGenerales();
+};
+
+// Validar datos generales en tiempo real
+function datosGeneralesCompletos(){
+  const campos = [
+    document.getElementById('ageGeneral'),
+    document.getElementById('sex'),
+    document.getElementById('workplace'),
+    document.getElementById('education'),
+    document.getElementById('marital')
+  ];
+  return campos.every(c => c.value);
+}
+function actualizarEstadoDatosGenerales(){
+  goLaborBtn.disabled = !datosGeneralesCompletos();
+}
+['ageGeneral','sex','workplace','education','marital'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', actualizarEstadoDatosGenerales);
+  document.getElementById(id).addEventListener('change', actualizarEstadoDatosGenerales);
+});
+
+goLaborBtn.onclick=()=>{
+  if(!datosGeneralesCompletos()) return;
+  document.getElementById('generalDataView').classList.add('hidden');
+  document.getElementById('laborView').classList.remove('hidden');
+  actualizarEstadoDatosLaborales();
+};
+
+// Validar datos laborales en tiempo real
+function datosLaboralesCompletos(){
+  const campos = [
+    document.getElementById('yearsService'),
+    document.getElementById('unit'),
+    document.getElementById('contract'),
+    document.getElementById('shift'),
+    document.getElementById('otherJob'),
+    document.getElementById('postgradStudy'),
+    document.getElementById('hasChildren')
+  ];
+  return campos.every(c => c.value);
+}
+function actualizarEstadoDatosLaborales(){
+  goScaleBtn.disabled = !datosLaboralesCompletos();
+}
+['yearsService','unit','contract','shift','otherJob','postgradStudy','hasChildren'].forEach(id=>{
+  document.getElementById(id).addEventListener('change', actualizarEstadoDatosLaborales);
+});
+
+goScaleBtn.onclick=()=>{
+  if(!datosLaboralesCompletos()) return;
+  document.getElementById('laborView').classList.add('hidden');
+  document.getElementById('scaleView').classList.remove('hidden');
+  actualizarEstadoBotonEscala();
+};
+
+// ----- Generar ID desde DNI -----
+function generarIdDesdeDni(dni){
+  if(!dni) return '';
+  let suma = 0;
+  for(let i=0;i<dni.length;i++){
+    const ch = dni[i];
+    if(!isNaN(parseInt(ch,10))){
+      suma += parseInt(ch,10);
+    }else{
+      suma += ch.charCodeAt(0);
+    }
+  }
+  const num = (suma % 999) + 1; // 1–999
+  return 'P' + String(num).padStart(3,'0');
+}
+
+// ----- Envío a Google Apps Script -----
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwrOrC4sw2iUmx2T4TbJC6zLDKB3izefQ5OyCGoegcxmvD-5xKvOU7tTGjQ2YThYEFYLg/exec';
+
+saveBtn.onclick=()=>{
+  if(!validarBloqueEscala(currentBlock)) return;
+  const dni = document.getElementById('dni').value.trim();
+  const participantId = generarIdDesdeDni(dni);
+
+  const today = new Date();
+  const consentDate = today.toISOString().slice(0,10);
+
+  const payload = {
+    id: participantId,
+    edad: document.getElementById('ageGeneral').value || document.getElementById('ageConsent').value || '',
+    sexo: document.getElementById('sex').value,
+    lugar_trabajo: document.getElementById('workplace').value,
+    nivel_formacion: document.getElementById('education').value,
+    estado_civil: document.getElementById('marital').value,
+    tiempo_servicio: document.getElementById('yearsService').value,
+    servicio: document.getElementById('unit').value,
+    tipo_contrato: document.getElementById('contract').value,
+    turno: document.getElementById('shift').value,
+    otro_trabajo: document.getElementById('otherJob').value,
+    estudios_postgrado: document.getElementById('postgradStudy').value,
+    tiene_hijos: document.getElementById('hasChildren').value,
+    consent_date: consentDate,
+    consent_dni: dni
+  };
+
+  saveBtn.disabled = true;
+
+  fetch(ENDPOINT, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(!data.ok){
+      alert('Ocurrió un problema al guardar sus respuestas. Intente nuevamente.');
+      saveBtn.disabled = false;
+      return;
+    }
+    thankYou.classList.remove('hidden');
+  })
+  .catch(err => {
+    console.error(err);
+    alert('No se pudo conectar con el servidor. Verifique su conexión e intente nuevamente.');
+    saveBtn.disabled = false;
+  });
+};
+</script>
+</body>
+</html>
